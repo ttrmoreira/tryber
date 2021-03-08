@@ -65,11 +65,18 @@ function buttonBuilder(nameButton){
         button.id = "btn-holiday";
         button.innerText = "Feriados";
         buttonContainer.appendChild(button);
+    }else if(nameButton == "Sexta-feira"){
+        button.id = "btn-friday";
+        button.innerText = "Sexta-feira";
+        buttonContainer.appendChild(button);
     }
+
 }
 
 buttonBuilder("Feriados");
+buttonBuilder("Sexta-feira");
 
+//Exercise 3
 function showHolidays() {
     let holidayButton = document.querySelector('#btn-holiday');
     let holidays = document.querySelectorAll('.holiday')
