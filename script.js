@@ -148,13 +148,43 @@ function showFridays(fridaysArray) {
 
   //Exercise 8
   function addBackgroundColorTask(colorDescription){
-    let color =  document.createElement('div');
-    color.style.backgroundColor = colorDescription;
+    let task =  document.createElement('div');
+    task.className = 'task';
+    task.style.backgroundColor = colorDescription;
     var taskList = document.querySelector('.my-tasks');
-    taskList.appendChild(color);
+    taskList.appendChild(task);
   }
-  
 
+  function setTask() {
+    let selectedTask = document.getElementsByClassName('task selected');
+    let myTasks = document.querySelector('.task');
+  
+    myTasks.addEventListener('click', function(event) {
+      if (selectedTask.length === 0) {
+        event.target.className = 'task selected';
+      } else {
+        event.target.className = 'task';
+      }
+    });
+  };
+
+  function addDayColor(){
+      let selectedTask = document.getElementsByClassName('task selected');
+      let days = document.querySelector('#days');
+      let taskDiv = document.querySelector('.task');
+      let taskColor = taskDiv.style.backgroundColor;
+
+      days.addEventListener('click', function(event){
+          let eventColored = event.target.style.color;
+          if(selectedTask.length > 0 && eventColored !== taskColor){
+              let color = selectedTask[0].style.backgroundColor;
+              event.target.style.color = color;
+          }else if(eventColored === taskColor && selectedTask.length !== 0){
+            event.target.style.color = 'rgb(119,119,119)';
+          }
+      })
+
+  }
   
   createDaysOfTheWeek();
   createCalendar();
@@ -167,3 +197,5 @@ function showFridays(fridaysArray) {
   dayZoomOut();
   addTask("Cozinhar");
   addBackgroundColorTask("blue");
+  setTask();
+  addDayColor();
