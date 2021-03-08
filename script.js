@@ -53,5 +53,19 @@ for (index = 0; index < dezDaysList.length; index +=1){
     }
 
     console.log(dayItem);
+    daysList.appendChild(dayItem);
 }
 
+
+//Exercise 2
+function buttonBuilder(nameButton){
+    var button = document.createElement('button');
+    const buttonContainer = document.querySelector('.buttons-container');
+    if(nameButton == "Feriados"){
+        button.id = "btn-holiday";
+        button.innerText = "Feriados";
+        buttonContainer.appendChild(button);
+    }
+}
+
+buttonBuilder("Feriados");
