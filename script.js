@@ -11,7 +11,7 @@ function createDaysOfTheWeek() {
     };
 };
 
-createDaysOfTheWeek();
+
 
 function isHoliday(day){
     let arrayHoliday = [24, 25, 31];
@@ -36,28 +36,40 @@ function isFriday(day){
 
   
 //Exercise 1
-const dezDaysList = [29, 30, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
-const daysList = document.getElementById('days');
 
-for (index = 0; index < dezDaysList.length; index +=1){
-    let day = dezDaysList[index];
-    let dayItem = document.createElement('li');
-    dayItem.innerHTML = day;
-    dayItem.className = 'day';
+function createCalendar (){
+
+    const dezDaysList = [29, 30, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
+    const daysList = document.getElementById('days');
     
-    if(isHoliday(day)){
-    dayItem.className += ' holiday';
-    } 
-    if(isFriday(day)){
-    dayItem.className += ' friday'
+    for (index = 0; index < dezDaysList.length; index +=1){
+        let day = dezDaysList[index];
+        let dayItem = document.createElement('li');
+        dayItem.innerHTML = day;
+        dayItem.className = 'day';
+        
+        if(isHoliday(day)){
+        dayItem.className += ' holiday';
+        } 
+        if(isFriday(day)){
+        dayItem.className += ' friday'
+        }
+        daysList.appendChild(dayItem);
     }
-
-    console.log(dayItem);
-    daysList.appendChild(dayItem);
 }
 
+function resetCalendar(){
 
-//Exercise 2
+    let fridays = [ 4, 11, 18, 25 ];
+    const daysList = document.getElementById('days');
+    console.log(daysList);
+    for(var index = 0; index < daysList.length; index +=1){
+        daysList.removeChild(daysList.childNodes[index]);
+    }
+    console.log(daysList);
+}
+
+//Exercise 2 and 4
 function buttonBuilder(nameButton){
     var button = document.createElement('button');
     const buttonContainer = document.querySelector('.buttons-container');
@@ -73,14 +85,13 @@ function buttonBuilder(nameButton){
 
 }
 
-buttonBuilder("Feriados");
-buttonBuilder("Sexta-feira");
+
 
 //Exercise 3
 function showHolidays() {
     let holidayButton = document.querySelector('#btn-holiday');
-    let holidays = document.querySelectorAll('.holiday')
-  
+    let holidays = document.querySelectorAll('.holiday');
+
     holidayButton.addEventListener('click', function() {
       for (let index = 0; index < holidays.length; index += 1) {
         if (holidays[index].style.backgroundColor === 'white') {
@@ -90,6 +101,30 @@ function showHolidays() {
         }
       }
     })
+
+  };
+
+  //Exercise 5
+function showFridays(fridaysArray) {
+
+    let fridayButton = document.querySelector('#btn-friday');
+    let fridays = document.querySelectorAll('.friday');
+
+    fridayButton.addEventListener('click', function() {
+        for (let index = 0; index < fridays.length; index += 1) {
+          if (fridays[index].innerText === 'IHAAA') {
+            fridays[index].innerText = fridaysArray[index];;
+          } else {
+            fridays[index].innerText = 'IHAAA';
+          }
+        }
+      })
   };
   
+  createDaysOfTheWeek();
+  createCalendar();
+  buttonBuilder("Feriados");
+  buttonBuilder("Sexta-feira");
   showHolidays();
+  let arrayFridays = [ 4, 11, 18, 25 ];
+  showFridays(arrayFridays);
