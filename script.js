@@ -69,3 +69,20 @@ function buttonBuilder(nameButton){
 }
 
 buttonBuilder("Feriados");
+
+function showHolidays() {
+    let holidayButton = document.querySelector('#btn-holiday');
+    let holidays = document.querySelectorAll('.holiday')
+  
+    holidayButton.addEventListener('click', function() {
+      for (let index = 0; index < holidays.length; index += 1) {
+        if (holidays[index].style.backgroundColor === 'white') {
+            holidays[index].style.backgroundColor = 'rgb(238,238,238)';
+        } else {
+            holidays[index].style.backgroundColor = 'white';
+        }
+      }
+    })
+  };
+  
+  showHolidays();
