@@ -145,6 +145,14 @@ function showFridays(fridaysArray) {
     var taskList = document.querySelector('.my-tasks');
     taskList.appendChild(task);
   }
+
+  //Exercise 8
+  function addBackgroundColorTask(colorDescription){
+    let color =  document.createElement('div');
+    color.style.backgroundColor = colorDescription;
+    var taskList = document.querySelector('.my-tasks');
+    taskList.appendChild(color);
+  }
   
 
   
@@ -157,4 +165,5 @@ function showFridays(fridaysArray) {
   showFridays(arrayFridays);
   dayZoomIn();
   dayZoomOut();
-  addTask("Cozinhar")
+  addTask("Cozinhar");
+  addBackgroundColorTask("blue");
