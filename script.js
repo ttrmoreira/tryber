@@ -9,7 +9,49 @@ function createDaysOfTheWeek() {
   
       weekDaysList.appendChild(dayListItem);
     };
-  };
+};
+
+createDaysOfTheWeek();
+
+function isHoliday(day){
+    let arrayHoliday = [24, 25, 31];
+    for(let index = 0; index < arrayHoliday.length; index += 1){
+        if (day == arrayHoliday[index]){
+            return true;
+        }
+    }
+    return false;
+}
+
+function isFriday(day){
+    let arrayHoliday = [4, 11, 18, 25];
+    for(let index = 0; index < arrayHoliday.length; index += 1){
+          if (day == arrayHoliday[index]){
+              return true;
+          }
+      }
+  return false;
+}
+
+
   
-  createDaysOfTheWeek();
-  
+//Exercise 1
+const dezDaysList = [29, 30, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
+const daysList = document.getElementById('days');
+
+for (index = 0; index < dezDaysList.length; index +=1){
+    let day = dezDaysList[index];
+    let dayItem = document.createElement('li');
+    dayItem.innerHTML = day;
+    dayItem.className = 'day';
+    
+    if(isHoliday(day)){
+    dayItem.className += ' holiday';
+    } 
+    if(isFriday(day)){
+    dayItem.className += ' friday'
+    }
+
+    console.log(dayItem);
+}
+
