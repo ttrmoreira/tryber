@@ -12,7 +12,6 @@ function createDaysOfTheWeek() {
 };
 
 
-
 function isHoliday(day){
     let arrayHoliday = [24, 25, 31];
     for(let index = 0; index < arrayHoliday.length; index += 1){
@@ -32,7 +31,6 @@ function isFriday(day){
       }
   return false;
 }
-
 
   
 //Exercise 1
@@ -120,6 +118,35 @@ function showFridays(fridaysArray) {
         }
       })
   };
+
+  //Exercise 6
+  function dayZoomIn() {
+    let days = document.querySelector('#days');
+  
+    days.addEventListener('mouseover', function(event) {
+      event.target.style.fontSize = '30px';
+      event.target.style.fontWeight = '600';
+    })
+  };
+  
+  function dayZoomOut() {
+    let days = document.querySelector('#days');
+  
+    days.addEventListener('mouseout', function(event) {
+      event.target.style.fontSize = '20px';
+      event.target.style.fontWeight = '200';
+    })
+  };
+
+  //Exercise 7
+  function addTask(taskDescription){
+    let task =  document.createElement('span');
+    task.innerText = taskDescription;
+    var taskList = document.querySelector('.my-tasks');
+    taskList.appendChild(task);
+  }
+  
+
   
   createDaysOfTheWeek();
   createCalendar();
@@ -128,3 +155,6 @@ function showFridays(fridaysArray) {
   showHolidays();
   let arrayFridays = [ 4, 11, 18, 25 ];
   showFridays(arrayFridays);
+  dayZoomIn();
+  dayZoomOut();
+  addTask("Cozinhar")
