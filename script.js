@@ -185,6 +185,35 @@ function showFridays(fridaysArray) {
       })
 
   }
+
+  //Bonus
+  function addCommitments(){
+      let commitmentContent = document.querySelector('#task-input');
+      let listTask = document.querySelector('.task-list');
+      let buttonAdd = document.querySelector('#btn-add');
+      
+      
+      buttonAdd.addEventListener('click', function(){
+        if(commitmentContent.value.length > 0){
+            let task = document.createElement('li');
+            task.innerText = commitmentContent.value;
+            listTask.appendChild(task); 
+            commitmentContent.value = '';
+        }else{
+            alert('O compromisso deve estar preenchido!');
+        }
+    })
+
+    commitmentContent.addEventListener('keyup', function(event){
+        if(event.keyCode === 13 && commitmentContent.value.length > 0){
+            let task = document.createElement('li');
+            task.innerText = commitmentContent.value;
+            listTask.appendChild(task); 
+            commitmentContent.value = '';
+        }
+    })
+
+  }
   
   createDaysOfTheWeek();
   createCalendar();
@@ -199,3 +228,4 @@ function showFridays(fridaysArray) {
   addBackgroundColorTask("blue");
   setTask();
   addDayColor();
+  addCommitments();
